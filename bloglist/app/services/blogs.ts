@@ -51,9 +51,7 @@ const blogs = [
 
 let nextId = 7
 
-export const getBlogs = () => {
-  return blogs
-}
+export const getBlogs = () => blogs
 
 export const addBlog = (
   title: string,
@@ -63,3 +61,5 @@ export const addBlog = (
 ) => {
   blogs.push({ id: `${nextId++}`, title, author, url, likes, __v: 0 })
 }
+
+export const getBlogById = (id: string) => blogs.find((blog) => blog.id === id)
