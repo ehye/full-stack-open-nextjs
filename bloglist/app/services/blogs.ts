@@ -51,7 +51,14 @@ const blogs = [
 
 let nextId = 7
 
-export const getBlogs = () => blogs.toSorted((a, b) => b.likes - a.likes)
+export const getBlogs = (title?: string) => {
+  const filteredBlogs = title
+    ? blogs.filter((blog) =>
+        blog.title.toLowerCase().includes(title.toLowerCase()),
+      )
+    : blogs
+  return filteredBlogs.toSorted((a, b) => b.likes - a.likes)
+}
 
 export const addBlog = (
   title: string,
