@@ -16,8 +16,9 @@ export const addBlog = async (
   author: string,
   url: string,
   likes: number,
+  userId: number,
 ) => {
-  await db.insert(blogs).values({ title, author, url, likes })
+  await db.insert(blogs).values({ title, author, url, likes, userId })
 }
 
 export const getBlogById = async (id: number) => db.query.blogs.findFirst({ where: eq(blogs.id, id) })
