@@ -2,8 +2,6 @@ import { eq, sql } from "drizzle-orm"
 import { db } from "../../db"
 import { blogs } from "../../db/schema"
 
-let nextId = 7
-
 export const getBlogs = async (title?: string) => {
   const filteredBlogs = title
     ? await db.query.blogs.findMany({ where: eq(blogs.title, title) })
