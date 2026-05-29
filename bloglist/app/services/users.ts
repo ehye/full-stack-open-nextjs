@@ -24,3 +24,14 @@ export const getUserWithBlogs = async (username: string) => {
     with: { blogs: true },
   })
 }
+
+export const addUser = async (username: string, name: string, passwordHash: string) => {
+  await db.insert(users).values({ username, name, passwordHash })
+}
+
+export const checkUsername = async (username: string) => {
+  const user = await db.query.users.findFirst({
+    where: eq(users.username, username),
+  })
+  return !!user
+}
