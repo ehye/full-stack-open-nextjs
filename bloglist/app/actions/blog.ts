@@ -47,6 +47,11 @@ export const createBlog = async (prevState: BlogFormState, formData: FormData) =
 }
 
 export const likeBlog = async (formData: FormData) => {
+  const session = await auth()
+  if (!session) {
+    redirect("/login")
+  }
+
   const id = formData.get('id') as string
   await addLikes(Number(id))
 

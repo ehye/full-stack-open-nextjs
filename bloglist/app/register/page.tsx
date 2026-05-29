@@ -17,7 +17,7 @@ export default function RegisterPage() {
             <input type="text" name="username" defaultValue={state.values?.username} required />
           </label>
         </div>
-        {state.errors && <p style={{ color: "red" }}>{state.errors['username']}</p>}
+        {state.errors && <p className="text-red-600">{state.errors['username']}</p>}
         <div>
           <label>
             Name
@@ -30,14 +30,14 @@ export default function RegisterPage() {
             <input type="password" name="password" defaultValue={state.values?.password} required />
           </label>
         </div>
-        {state.errors && <p style={{ color: "red" }}>{state.errors['password']}</p>}
+        {state.errors && <p className="text-red-600">{state.errors['password']}</p>}
         <div>
           <label>
             Confirm Password
             <input type="password" name="confirmPassword" required />
           </label>
         </div>
-        {state.errors && <p style={{ color: "red" }}>{state.errors['confirmPassword']}</p>}
+        {state.errors && <p className="text-red-600">{state.errors['confirmPassword']}</p>}
         <button type="submit">Register</button>
       </form>
     </div>
