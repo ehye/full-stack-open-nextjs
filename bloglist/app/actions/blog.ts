@@ -7,6 +7,7 @@ import { auth } from '../auth'
 
 export type BlogFormState = {
   errors: { [key: string]: string }
+  success: boolean
   values: {
     title: string
     author: string
@@ -36,13 +37,13 @@ export const createBlog = async (prevState: BlogFormState, formData: FormData) =
     errors.url = 'Url must be at least 5 characters long'
   }
   if (Object.keys(errors).length > 0) {
-    return { errors, values: { title, author, url } }
+    return { errors, values: { title, author, url }, success: false }
   }
 
   await addBlog(title, author, url, likes)
 
   revalidatePath('/blogs')
-  redirect('/blogs')
+  return { errors: {}, values: { title: '', author: '', url: '' }, success: true }
 }
 
 export const likeBlog = async (formData: FormData) => {
