@@ -12,6 +12,12 @@ export const getUserById = async (id: number) => {
   })
 }
 
+export const getUserByUsername = async (username: string) => {
+  return db.query.users.findFirst({
+    where: eq(users.username, username),
+  })
+}
+
 export const getBlogsByUserId = async (userId: number) => {
   return db.query.blogs.findMany({
     where: eq(blogs.userId, userId),
@@ -34,4 +40,8 @@ export const checkUsername = async (username: string) => {
     where: eq(users.username, username),
   })
   return !!user
+}
+
+export const generateTokenForUser = async (username: string, token: string) => {
+  await db.update(users).set({ token }).where(eq(users.username, username))
 }

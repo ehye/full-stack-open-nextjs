@@ -1,8 +1,10 @@
 "use server"
 
 import { redirect } from "next/navigation"
+import { revalidatePath } from "next/cache"
 import bcrypt from "bcryptjs"
-import { addUser, checkUsername } from "../services/users"
+import { addUser, checkUsername, generateTokenForUser } from "../services/users"
+import { getCurrentUser } from "../services/session"
 
 export type UserFormState = {
   errors: { [key: string]: string }
@@ -44,4 +46,15 @@ export const registerUser = async (prevState: UserFormState, formData: FormData)
   await addUser(username, name, passwordHash)
 
   redirect("/login")
+}
+
+export const generateToken = async () => {
+  const user = await getCurrentUser()
+  if (user) {
+    await generateTokenForUser(user?.username, crypto.randomUUID())
+    revalidatePath('/me')
+  }
+  else {
+    redirect("/login")
+  }
 }
