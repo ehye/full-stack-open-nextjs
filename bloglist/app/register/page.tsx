@@ -8,37 +8,37 @@ export default function RegisterPage() {
   const [state, formAction] = useActionState(registerUser, initialState)
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="max-w-md mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">Register</h2>
       <form action={formAction}>
-        <div>
-          <label>
+        <div className="mb-4">
+          <label className="block mb-2">
             Username
-            <input type="text" name="username" defaultValue={state.values?.username} required />
+            <input type="text" name="username" defaultValue={state.values?.username} required className="w-full px-3 py-2 border rounded" />
           </label>
         </div>
-        {state.errors && <p className="text-red-600">{state.errors['username']}</p>}
-        <div>
-          <label>
+        {state.errors && <p className="text-red-500">{state.errors['username']}</p>}
+        <div className="mb-4">
+          <label className="block mb-2">
             Name
-            <input type="text" name="name" defaultValue={state.values?.name} required />
+            <input type="text" name="name" defaultValue={state.values?.name} required className="w-full px-3 py-2 border rounded" />
           </label>
         </div>
-        <div>
-          <label>
+        <div className="mb-4">
+          <label className="block mb-2">
             Password
-            <input type="password" name="password" defaultValue={state.values?.password} required />
+            <input type="password" name="password" defaultValue={state.values?.password} required className="w-full px-3 py-2 border rounded" />
           </label>
         </div>
-        {state.errors && <p className="text-red-600">{state.errors['password']}</p>}
-        <div>
-          <label>
+        {state.errors && <p className="text-red-500">{state.errors['password']}</p>}
+        <div className="mb-4">
+          <label className="block mb-2">
             Confirm Password
-            <input type="password" name="confirmPassword" required />
+            <input type="password" name="confirmPassword" required className="w-full px-3 py-2 border rounded" />
           </label>
         </div>
-        {state.errors && <p className="text-red-600">{state.errors['confirmPassword']}</p>}
-        <button type="submit">Register</button>
+        {state.errors && <p className="text-red-500">{state.errors['confirmPassword']}</p>}
+        <button type="submit" className="bg-blue-600 text-white w-full mt-8 px-4 py-2 rounded hover:bg-blue-700">Register</button>
       </form>
     </div>
   )

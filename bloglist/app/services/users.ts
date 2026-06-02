@@ -62,3 +62,7 @@ export const getUserByToken = async (token: string) => {
     columns: userColumnsWithoutPasswordHash,
   })
 }
+
+export const deleteAllUsers = async () => {
+  await db.delete(users)
+}

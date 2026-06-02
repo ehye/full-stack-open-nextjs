@@ -8,26 +8,28 @@ export default function NavBar() {
 
   return (
     <nav className="bg-gray-800 text-white px-6 py-3 flex items-center gap-4">
-      <NavLink href="/">home</NavLink>
+      <NavLink href="/">Home</NavLink>
       {" | "}
-      <NavLink href="/blogs">blogs</NavLink>
+      <NavLink href="/blogs">Blogs</NavLink>
       {" | "}
-      <NavLink href="/users">users</NavLink>
+      <NavLink href="/users">Users</NavLink>
       {" | "}
       <div className="ml-auto flex items-center gap-4">
         {session ? (
           <>
-            <NavLink href="/blogs/new">create new</NavLink>
+            <NavLink href="/blogs/new">Create new</NavLink>
             {" | "}
-            <NavLink href="/me">me</NavLink>
+            <NavLink href="/me">Me</NavLink>
             {" | "}
-            <button onClick={() => signOut()} className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm">logout</button>
+            <button onClick={() => signOut()} className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm">
+              Logout
+            </button>
           </>
         ) : (
           <>
-            <NavLink href="/login">login</NavLink>
+            <NavLink href="/login">Login</NavLink>
             {" | "}
-            <NavLink href="/register">register</NavLink>
+            <NavLink href="/register">Register</NavLink>
           </>
         )}
       </div>

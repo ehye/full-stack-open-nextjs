@@ -43,7 +43,7 @@ export default function LoginPage() {
             <input type="password" name="password" required className="w-full px-3 py-2 border rounded" />
           </label>
         </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</button>
+        <button type="submit" className="bg-blue-600 text-white w-full mt-8 px-4 py-2 rounded hover:bg-blue-700">Login</button>
       </form>
     </div>
   )

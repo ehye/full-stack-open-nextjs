@@ -27,3 +27,7 @@ export const markAsRead = async (blogId: number, userId: number) => {
   await db.update(readingList).set({ read: true })
     .where(and(eq(readingList.blogId, blogId), eq(readingList.userId, userId)))
 }
+
+export const deleteAllFromReadingList = async () => {
+  await db.delete(readingList)
+}

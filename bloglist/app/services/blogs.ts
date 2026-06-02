@@ -28,3 +28,7 @@ export const addLikes = async (id: number) => {
     await db.update(blogs).set({ likes: blog.likes + 1 }).where(eq(blogs.id, id))
   }
 }
+
+export const deleteAllBlogs = async () => {
+  await db.delete(blogs)
+}

@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Link from 'next/link'
 import { getBlogs } from '../services/blogs'
 
@@ -22,16 +23,18 @@ const Blogs = async ({
         <button type="submit">Search</button>
       </form>
       {title && <p>Search results for &quot;{title}&quot;</p>}
-      <ul className="space-y-2">
-        {blogs.map((blog) => (
-          <li key={blog.id} className="border rounded p-3 hover:bg-gray-50">
-            <Link href={`/blogs/${blog.id}`} className="text-blue-600 hover:underline">
-              {blog.title} by {blog.author}
-              <strong className="ml-2 text-amber-600"> ({blog.likes} likes)</strong>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<p>Loading blogs...</p>}>
+        <ul className="space-y-2">
+            {blogs.map((blog) => (
+              <li key={blog.id} className="border rounded p-3 hover:bg-gray-50">
+                <Link href={`/blogs/${blog.id}`} className="text-blue-600 hover:underline">
+                  {blog.title} by {blog.author}
+                  <strong className="ml-2 text-amber-600"> ({blog.likes} likes)</strong>
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </Suspense>
     </div>
   )
 }
